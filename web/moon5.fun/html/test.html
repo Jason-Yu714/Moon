@@ -1,0 +1,48 @@
+<!-- 引入 Vue 3 CDN -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<!-- Vue 实例挂载点 -->
+<div id="app"></div>
+
+<template id="app-template">
+  <div>
+    <!-- 渲染部门列表 -->
+    <ul>
+      <li v-for="dept in deptList" :key="dept.id">
+        {{ dept.name }} <!-- 根据实际数据字段调整 -->
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script type="module">
+// 定义组件
+const AppComponent = {
+  template: '#app-template', // 关联模板
+  data() {
+    return {
+      deptList: []
+    }
+  },
+  mounted() {
+    fetch("http://127.0.0.1:9876/test.html")
+      .then(res => {
+        if (!res.ok) throw new Error(`请求失败：${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        if (!data || !Array.isArray(data.data)) {
+          throw new Error("后端返回数据格式错误，缺少 data 数组");
+        }
+        this.deptList = data.data;
+      })
+      .catch(error => {
+        console.error("数据请求失败：", error);
+      });
+  }
+};
+
+// 实例化 Vue 并挂载到页面
+const { createApp } = Vue;
+createApp(AppComponent).mount('#app');
+</script>

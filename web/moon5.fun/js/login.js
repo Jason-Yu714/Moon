@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const username = document.querySelector('input[name="username"]');
     const password = document.querySelector('input[name="password"]');
     const submitBtn = document.querySelector('.button-submit');
+    // 获取眼睛图标元素
+    const eyeIcon = document.querySelector('i[name="eye"]');
 
     // 检查元素是否成功获取
     console.log('Username input:', username);
@@ -26,6 +28,23 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.log('某些元素未成功获取，请检查 HTML 结构。');
     }
+
+    // 眼睛图标点击事件
+    if (eyeIcon) {
+        eyeIcon.addEventListener('click', function () {
+            // 切换密码输入类型
+            if (password.type === 'password') {
+                password.type = 'text';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            } else {
+                password.type = 'password';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            }
+        });
+    }
+    
 
     // 节流函数
     function throttle(func, delay) {
@@ -87,4 +106,27 @@ document.addEventListener('DOMContentLoaded', function() {
             tail.remove();
         });
     }
+});
+
+
+// 修改密码显示/隐藏功能，支持多个密码框
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取所有眼睛图标（注意使用 querySelectorAll）
+    const eyeIcons = document.querySelectorAll('.inputForm i.fa-eye-slash');
+    
+    // 为每个眼睛图标绑定点击事件
+    eyeIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // 获取当前图标所在的输入框组（.inputForm）中的密码输入框
+            const passwordInput = this.parentElement.querySelector('input[type="password"], input[type="text"]');
+            
+            // 切换密码显示状态
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // 切换图标样式
+            this.classList.toggle('fa-eye-slash');
+            this.classList.toggle('fa-eye');
+        });
+    });
 });
