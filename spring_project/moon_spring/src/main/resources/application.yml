@@ -10,6 +10,8 @@ spring:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    开起了驼峰命名
+    map-underscore-to-camel-case: true
 
 server:
   port: 9876

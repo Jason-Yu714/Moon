@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查找</title>
+
+
+
+
+</head>
+<body>
+
+<!-- Vue 实例挂载点 -->
+    <div id="app"></div>
+
+    <template id="app-template">
+
+        <div>
+
+            <div>
+            <input 
+                type="text" 
+                v-model="searchTerm" 
+                placeholder="输入ID或名称搜索"
+                @keyup.enter="handleSearch"  
+                id="searchInput"
+            >
+            <!-- 修复：使用 @click 绑定 Vue 方法，移除 onclick -->
+            <button @click="handleSearch" style="margin-left: 8px; padding: 10px 16px;">搜索</button>
+
+
+
+            </div>
+            
+            <table class="test_table">
+
+            <thead>
+                <tr >
+                <th >ID</th>
+                <th >name</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr v-for="dept in deptList" :key="dept.id">
+                <td>{{ dept.id }}</td>
+                <td>{{ dept.name }}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+    </template>
+</body>
+</html>
+
+
+    <!-- 引入 Vue 3 CDN -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script type="module">
+const AppComponent = {
+  template: '#app-template', 
+  data() {
+    return {
+      deptList: [],
+      searchTerm: ''
+    }
+  },
+  methods: {
+    handleSearch() {
+      // 发送搜索参数到后端（使用 GET 请求，参数拼接到 URL）
+      fetch(`http://127.0.0.1:9876/html/test?id=${encodeURIComponent(this.searchTerm)}`)
+        .then(res => {
+          if (!res.ok) throw new Error(`搜索请求失败：${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          if (!data || !Array.isArray(data.data)) {
+            throw new Error("后端搜索结果格式错误");
+          }
+          this.deptList = data.data; // 更新表格数据为搜索结果
+        })
+        .catch(error => {
+          console.error("搜索失败：", error);
+        });
+    }
+  },
+  mounted() {
+    // 初始加载可留空或加载全部数据（根据需求）
+    this.deptList = [];
+  }
+};
+
+const { createApp } = Vue;
+createApp(AppComponent).mount('#app');
+</script>
+

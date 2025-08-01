@@ -16,7 +16,7 @@ public class DeptServiceImpl implements DeptService {
     private DeptMapper deptMapper;
 
     @Override
-    public List<Dept> findAll() {
-        return deptMapper.findAll();
+    public List<Dept> findAll(Integer id) {
+        return deptMapper.findAll(id);
     }
 }

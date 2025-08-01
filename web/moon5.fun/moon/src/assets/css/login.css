@@ -1,0 +1,215 @@
+        /* 通用选择器，将所有元素的外边距和内边距都设置为 0 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 设置 html 元素的高度为视口高度的 100% */
+        html {
+            height: 100%;
+
+        }
+        /* 设置 body 元素的高度为视口高度的 100% */
+        body {
+
+        }
+        /* 容器类，设置高度为视口高度的 100%，并添加从右到左的渐变背景 */
+        .container {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center;     /* 垂直居中 */
+            height: 100vh;           /* 撑满整个视口 */
+            background-image: url("../img/login1.jpg");
+            background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-origin: border-box;
+			background-size: 100% 100%;
+        }
+
+        /* 定义表单容器的样式 */
+        .form {
+        display: flex; /* 使用弹性布局 */
+        flex-direction: column; /* 设置弹性布局方向为垂直 */
+        gap: 5px; /* 设置子元素之间的间距为 10px */
+        padding: 40px; /* 设置内边距为 30px */
+        padding-top: 20px;
+        border-radius: 20px; /* 设置圆角边框半径为 20px */
+        background-color: #fff;
+        width: 358px;
+        /* 将固定高度改为最小高度，允许内容撑开容器 */
+        min-height: 400px; /* 修改前：height: 400px */
+        /* position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); */
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* 定义表单标题的样式 */
+        .header {
+            font-size: 40px; /* 设置字体大小为 30px */
+            font-weight: 600; /* 设置字体粗细为 600 */
+            color: pink; 
+            margin-bottom: 30px; /* 设置下外边距为 40px */
+            text-align: center;
+        }
+
+
+        /* 定义输入框占位文本的样式 */
+        ::placeholder {
+        /* 设置字体族，优先使用系统原生字体 */
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* 定义表单内按钮的样式 */
+        .form button {
+        align-self: flex-end; /* 设置按钮在弹性容器中右对齐 */
+        }
+
+        /* 定义类名为 flex-column 的元素下直接子元素 label 的样式 */
+        .flex-column > label {
+        color: #151717; /* 设置文本颜色为深灰色 */
+        font-weight: 600; /* 设置字体粗细为 600 */
+        }
+
+        /* 定义输入框容器的样式 */
+        .inputForm {
+        border: 1.5px solid #ecedec; /* 设置 1.5px 浅灰色边框 */
+        border-radius: 10px; /* 设置圆角边框半径为 10px */
+        height: 50px; /* 设置高度为 50px */
+        display: flex; /* 使用弹性布局 */
+        align-items: center; /* 设置子元素垂直居中 */
+        padding-left: 10px; /* 设置左内边距为 10px */
+        transition: 0.2s ease-in-out; /* 设置边框变化时 0.2 秒的过渡效果 */
+        }
+
+        /* 定义输入框的样式 */
+        .input {
+        margin-left: 10px; /* 设置左外边距为 10px */
+        border-radius: 10px; /* 设置圆角边框半径为 10px */
+        border: none; /* 去除边框 */
+        width: 85%; /* 设置宽度为父容器的 85% */
+        height: 100%; /* 设置高度为父容器的 100% */
+        }
+
+        /* 定义输入框获取焦点时的样式 */
+        .input:focus {
+        outline: none; /* 去除获取焦点时的默认外边框 */
+        }
+
+        /* 定义输入框容器内有元素获取焦点时的样式 */
+        .inputForm:focus-within {
+        border: 1.5px solid lightcoral; /* 设置边框为 1.5px 蓝色 */
+        }
+
+        /* 定义水平弹性布局容器的样式 */
+        .flex-row {
+        display: flex; /* 使用弹性布局 */
+        flex-direction: row; /* 设置弹性布局方向为水平 */
+        align-items: center; /* 设置子元素垂直居中 */
+        gap: 10px; /* 设置子元素之间的间距为 10px */
+        justify-content: space-between; /* 设置子元素两端对齐 */
+        }
+
+        /* 定义类名为 flex-row 的元素下 div 内 label 的样式 */
+        .flex-row > div > label {
+        font-size: 14px; /* 设置字体大小为 14px */
+        color: black; /* 设置文本颜色为黑色 */
+        font-weight: 400; /* 设置字体粗细为 400 */
+        }
+
+        /* 定义类名为 span 的元素的样式 */
+        .span {
+        font-size: 14px; /* 设置字体大小为 14px */
+        margin-left: 5px; /* 设置左外边距为 5px */
+        color: #2d79f3; /* 设置文本颜色为蓝色 */
+        font-weight: 500; /* 设置字体粗细为 500 */
+        cursor: pointer; /* 设置鼠标悬停时显示手型光标 */
+        }
+
+        /* 定义提交按钮的样式 */
+        .button-submit {
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            margin-top: 20px;
+            background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+            border: none;
+            border-radius: 50px;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            box-shadow: 1px 3px 0px #fbc2eb;
+            transition-duration: .3s;
+            cursor: pointer;
+        }
+
+        /* 定义提交按钮鼠标悬停时的样式 */
+        .button-submit:hover {
+            background-image: linear-gradient(to right,#fbc2eb, #a6c1ee);
+        }
+
+        .button-sign {
+            border: none;
+            color: #2D8CF6;
+            background-color: white;
+        }
+
+        /* 定义段落元素的样式 */
+        .p {
+        text-align: center; /* 设置文本居中对齐 */
+        color: black; /* 设置文本颜色为黑色 */
+        font-size: 14px; /* 设置字体大小为 14px */
+        margin: 5px 0; /* 设置上下外边距 */
+        }
+
+        /* 定义通用按钮的样式 */
+        .btn {
+        margin-top: 10px; /* 设置上外边距为 10px */
+        width: 100%; /* 设置宽度为父容器的 100% */
+        height: 50px; /* 设置高度为 50px */
+        border-radius: 10px; /* 设置圆角边框半径为 10px */
+        display: flex; /* 使用弹性布局 */
+        justify-content: center; /* 设置子元素水平居中 */
+        align-items: center; /* 设置子元素垂直居中 */
+        font-weight: 500; /* 设置字体粗细为 500 */
+        gap: 10px; /* 设置子元素之间的间距为 10px */
+        border: 1px solid #ededef; /* 设置 1px 浅灰色边框 */
+        background-color: white; /* 设置背景颜色为白色 */
+        cursor: pointer; /* 设置鼠标悬停时显示手型光标 */
+        transition: 0.2s ease-in-out; /* 设置边框变化时 0.2 秒的过渡效果 */
+        }
+
+        /* 定义通用按钮鼠标悬停时的样式 */
+        .btn:hover {
+        border: 1px solid #2d79f3; /* 设置边框为 1px 蓝色 */
+        background-color: #2d79f3;
+        color: white;
+        }
+
+        .tail {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('../img/sakura.png');
+            background-size: cover;
+            pointer-events: none;
+            z-index: 9999;
+            animation: scatterFall 3s ease-in-out;
+        }
+
+        @keyframes scatterFall {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                /* 向四周飘落，结合水平和垂直偏移 */
+                transform: translate(calc(var(--explode-x) * 1px), calc(var(--explode-y) * 1px + 100vh)) rotate(360deg);
+                opacity: 0;
+            }
+        }
