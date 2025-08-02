@@ -1,0 +1,25 @@
+/* 爱心动画样式（从 Vue 项目复制） */
+.heart {
+  position: fixed;
+  pointer-events: none;
+  /* 调整动画：收缩至点击位置，时长2秒，缓出效果 */
+  animation: heart-contract 7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  z-index: 9999;
+}
+
+/* 收缩至点击位置动画 */
+@keyframes heart-contract {
+  0% {
+    /* 起始状态：炸开后的随机位置（原爆炸阶段位置） */
+    transform: translate(
+      calc(-50% + var(--burst-x)), 
+      calc(-50% + var(--burst-y))
+    ) scale(var(--scale));
+    opacity: 1;
+  }
+  100% {
+    /* 结束状态：收缩至点击位置中心，缩放为0 */
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}

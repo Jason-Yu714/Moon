@@ -2,22 +2,33 @@
 
     <div class="container" id="app">
 
-        <form class="form" @submit.prevent="handleLogin">
+        <form class="form" @submit.prevent="handleLogin" autocomplete="off">
             <div class="header">Login</div>
 
             <div class="flex-column">
             <label>Username </label></div>
             <div class="inputForm">
                 <i class="fa fa-user"></i>
-                <input type="text" class="input" placeholder="Enter your Username" name="username" v-model="username">
+                <!-- 用户名输入框添加 autocomplete="off" -->
+                <input 
+                type="text" 
+                class="input" 
+                placeholder="Enter your Username" 
+                name="username" 
+                v-model="username"
+                autocomplete="off"  
+                >
             </div>
-    
+
             <div class="flex-column">
-            <label>Password </label></div>
-                <PasswordInput 
-                    placeholder="Enter your Password" 
-                    v-model="password" 
-                />
+            <label>Password </label>
+            <!-- 修复：移除末尾多余的 '<' 字符 -->
+            <PasswordInput 
+                placeholder="Enter your Password" 
+                v-model="password" 
+                autocomplete="new-password"  
+            />
+            </div>
             
             <div class="flex-row">
                     <div>
@@ -59,33 +70,34 @@ export default {
   components: { PasswordInput },
   data() {
     return {
-      username: '',
-      password: '',
+      username: '',  // 确保初始化为空字符串
+      password: ''   // 确保初始化为空字符串
     }
   },
   methods: {
     togglePasswordVisibility,
     handleLogin() {
-      // 发送登录请求到后端接口
-        this.$axios.post('http://127.0.0.1:9876/login', {
+      this.$axios.post('http://127.0.0.1:9876/login', {
         username: this.username,
         password: this.password
       })
       .then(response => {
-        // 后端返回 code:1 表示登录成功
         if (response.data.code === 1) {
-          alert('登录成功！');
-          // 跳转到 test.html 页面
-          this.$router.push('/test')
+          // 仅在勾选"Remember me"时存储凭据
+          if (this.rememberMe) {
+            localStorage.setItem('savedUsername', this.username);
+            localStorage.setItem('savedPassword', this.password);
+          }
+          window.location.href = 'http://localhost:5173'; 
         } else {
           alert('登录失败：' + response.data.msg);
-          this.password = ''; // 清空密码
+          this.password = '';
         }
       })
       .catch(error => {
         console.error('登录请求失败:', error);
         alert('网络错误，请检查后端服务');
-        this.password = ''; // 清空密码
+        this.password = '';
       });
     }
   }

@@ -88,8 +88,10 @@
         margin-left: 10px; /* 设置左外边距为 10px */
         border-radius: 10px; /* 设置圆角边框半径为 10px */
         border: none; /* 去除边框 */
+        border-color: white;
         width: 85%; /* 设置宽度为父容器的 85% */
         height: 100%; /* 设置高度为父容器的 100% */
+        font-size: 16px; /* 设置字体大小为 16px */
         }
 
         /* 定义输入框获取焦点时的样式 */

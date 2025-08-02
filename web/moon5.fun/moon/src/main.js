@@ -4,6 +4,7 @@ import axios from 'axios'
 import router from './router'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './assets/js/PasswdClick'
+import './assets/css/moon.css'
 
 
 

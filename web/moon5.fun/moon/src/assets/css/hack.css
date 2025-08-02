@@ -1,0 +1,65 @@
+/* 横向排列父容器 */
+.hack-container {
+  display: flex; /* 启用弹性布局 */
+  min-height: 100vh; /* 高度铺满视口 */
+}
+
+/* 侧边栏样式调整 */
+.accordion {
+  width: 300px; /* 固定侧边栏宽度 */
+  flex-shrink: 0; /* 禁止侧边栏收缩 */
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-right: 1px solid #ddd; /* 右侧边框分隔 */
+}
+
+/* 正文区域样式 */
+.main-content {
+  flex: 1; /* 占据剩余宽度 */
+  padding: 20px; /* 内边距 */
+  overflow-y: auto; /* 内容溢出时可滚动 */
+  background-color: #fff; /* 白色背景 */
+}
+
+.accordion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.arrow-down {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+    caret-color: transparent;
+  border: none
+}
+
+.content {
+  padding: 10px;
+  border-left: 2px solid #007acc;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  height: 0;
+  opacity: 0;
+}
+
+/* 添加：HACK 标题居中 */
+.tiem-title {
+    text-align: center; /* 文本水平居中 */
+    padding: 15px 0; /* 上下内边距，优化间距 */
+    font-size: 18px; /* 可选：调整字体大小 */
+    font-weight: bold; /* 可选：加粗文本 */
+}
+

@@ -1,0 +1,10 @@
+    /* 添加 a 标签样式 */
+    a {
+        text-decoration: none; /* 去除下划线 */
+        color: black; /* 设置字体颜色为黑色 */
+    }
+
+    /* 如果需要 hover 效果可添加（可选） */
+    a:hover {
+        color: #333; /*  hover 时略微加深颜色 */
+    }

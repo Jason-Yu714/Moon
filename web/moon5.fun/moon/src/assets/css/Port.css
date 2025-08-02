@@ -1,0 +1,216 @@
+/* 内容容器：垂直排列并居中所有子元素 */
+        .content-container {
+        display: flex;
+        flex-direction: column; /* 垂直排列搜索框和表格 */
+        align-items: center; /* 水平居中 */
+        width: 100%;
+        margin-top: 30px;
+        }
+
+        /* 搜索区域：居中内部元素并添加间距 */
+        .search-container {
+        display: flex;
+        align-items: center; /* 搜索框和按钮垂直居中对齐 */
+        gap: 8px; /* 搜索框和按钮之间的间距 */
+        margin-bottom: 20px; /* 与表格保持距离 */
+        }
+
+        /* 搜索框宽度保持不变，通过父容器居中 */
+        .searchInput {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        /* 移除 justify-content: center（属于父容器属性） */
+        }
+
+        .test_table {
+        width: 80%;
+        max-width: 1200px;
+        margin: 15px auto;
+        border-collapse: collapse;
+        border: 2px solid #ddd;
+        table-layout: fixed; /* 固定表格布局 */
+        }
+        
+        /* 修改单元格样式实现内容截断 */
+        .test_table th,
+        .test_table td {
+        line-height: 40px;
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 16px;
+        white-space: nowrap; /* 禁止换行 */
+        overflow: hidden; /* 超出隐藏 */
+        text-overflow: ellipsis; /* 显示省略号 */
+        padding: 0 10px;
+        }
+        
+        /* 为各列分配宽度比例 */
+        .test_table th:nth-child(1), .test_table td:nth-child(1) { width: 10%; } /* Port列 */
+        .test_table th:nth-child(2), .test_table td:nth-child(2) { width: 20%; } /* serverName列 */
+        .test_table th:nth-child(3), .test_table td:nth-child(3) { width: 35%; } /* message列 */
+        .test_table th:nth-child(4), .test_table td:nth-child(4) { width: 35%; } /* attackMethod列 */
+        
+        /* 添加详情弹窗样式 */
+        .detail-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001; /* 确保在添加弹窗之上 */
+        }
+        
+        .detail-modal-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 500px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-content {
+        margin: 20px 0;
+        line-height: 1.6;
+        }
+        
+        .detail-content p {
+        margin: 10px 0;
+        word-break: break-word; /* 弹窗内允许内容换行 */
+        }
+        .test_table th {
+            background-color: #007bff; /* 表头背景色 */
+            color: #ffffff;
+        }
+        /* 这次奇偶行用 class 来写 */
+        .test_table tr.even {
+            background-color: #eee; /* 偶数行浅灰色 */
+        }
+        .test_table tr:hover {
+            background-color: #ccc; /* 鼠标悬停时的背景色:蓝色 */
+        }
+        /* 把90分以上的要特殊标识绿色 */
+        .test_table td.perfect {
+            background-color: #00ff00; /* 绿色背景 */
+        }
+
+                /* 添加端口表单样式 */
+        .add-port-container {
+          width: 80%;
+          margin: 20px auto;
+          padding: 15px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+        }
+
+        .add-port-container h3 {
+          margin-top: 0;
+          color: #007bff;
+        }
+
+        /* 修改表单组为垂直排列 */
+        .form-group {
+          display: flex;
+          flex-direction: column; /* 改为垂直排列 */
+          gap: 15px; /* 垂直间距 */
+          margin-top: 10px;
+        }
+        
+        /* 确保输入框占满宽度 */
+        .form-group input {
+          width: 100%; /* 改为100%宽度 */
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box; /* 确保padding不会增加总宽度 */
+        }
+
+        .form-group button {
+          padding: 10px 16px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        .form-group button:hover {
+          background-color: #0056b3;
+        }
+
+        /* 添加弹窗相关样式 */
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+        }
+
+        .modal-container {
+          background-color: white;
+          padding: 20px;
+          border-radius: 8px;
+          width: 500px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 15px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #eee;
+        }
+
+        .close-btn {
+          background: none;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+        }
+
+        .modal-footer {
+          display: flex;
+          justify-content: flex-end;
+          gap: 10px;
+          margin-top: 15px;
+          padding-top: 10px;
+          border-top: 1px solid #eee;
+        }
+
+        .cancel-btn, .confirm-btn {
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        .cancel-btn {
+          background-color: #ccc;
+          border: none;
+        }
+
+        .confirm-btn {
+          background-color: #007bff;
+          color: white;
+          border: none;
+        }
+
+        .port-heard {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+    
